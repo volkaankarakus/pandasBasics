@@ -9,6 +9,8 @@ import glob
 import numpy as np
 import cv2
 import pandas as pd
+import matplotlib.pyplot as plt 
+
 # Import all image files with the .jpg extension
 files = glob.glob ("*.jpg")
 image_data = []
@@ -23,7 +25,7 @@ for each in x:
     w.append(image_data[each].shape[0])
     h.append(image_data[each].shape[1])
 
-columnName1=['Weights']
+columnName1=['Widths']
 dataFrameW=pd.DataFrame(data=w,columns=columnName1)
 numericFeaturesW=dataFrameW.describe()
 
@@ -40,9 +42,11 @@ dataWH=pd.concat([dataFrameW,dataFrameH],axis=1)
 dataWH.reset_index(inplace=True,drop=True)
 print(dataWH)
 
+
+
 #histogram
-plt.hist(dataFrameW.Weights,bins=20,color='red',label='Weights')
-plt.hist(dataFrameH.Heights,bins=20,color='green',label='Heights')
+plt.hist(dataFrameW.Widths,bins=10,color='red',alpha=0.5,label='Widhts')
+plt.hist(dataFrameH.Heights,bins=10,color='green',alpha=0.5,label='Heights')
 plt.legend()
 plt.ylabel('Frequency')
 plt.title('Histogram')
