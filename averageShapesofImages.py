@@ -33,3 +33,17 @@ numericFeaturesH=dataFrameH.describe()
 
 print(numericFeaturesW)
 print(numericFeaturesH)
+
+#horizontal concatenating
+dataWH=pd.concat([dataFrameW,dataFrameH],axis=1)
+#index reset
+dataWH.reset_index(inplace=True,drop=True)
+print(dataWH)
+
+#histogram
+plt.hist(dataFrameW.Weights,bins=20,color='red',label='Weights')
+plt.hist(dataFrameH.Heights,bins=20,color='green',label='Heights')
+plt.legend()
+plt.ylabel('Frequency')
+plt.title('Histogram')
+plt.show()
