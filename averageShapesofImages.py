@@ -4,7 +4,6 @@ Created on Thu Feb  4 04:47:06 2021
 
 @author: VolkanKarakuş
 """
-
 import glob
 import numpy as np
 import cv2
@@ -22,8 +21,8 @@ w=[]
 h=[]
 x=list(range(len(image_data)))
 for each in x:
-    w.append(image_data[each].shape[0])
-    h.append(image_data[each].shape[1])
+    w.append(image_data[each].shape[1])
+    h.append(image_data[each].shape[0])
 
 columnName1=['Widths']
 dataFrameW=pd.DataFrame(data=w,columns=columnName1)
@@ -51,12 +50,12 @@ numericFeaturesFilteredLandscape=filteredLandscape.describe()
 numericFeaturesFilteredPortrait=filteredPortrait.describe()
 
 #histogram
-plt.hist(dataFrameW.Widths,bins=50,color='red',alpha=0.5,label='Widhts')
-plt.hist(dataFrameH.Heights,bins=50,color='green',alpha=0.5,label='Heights')
-plt.legend()
-plt.ylabel('Frequency')
-plt.title('Histogram')
-plt.show()
+# plt.hist(dataFrameW.Widths,bins=50,color='red',alpha=0.5,label='Widhts')
+# plt.hist(dataFrameH.Heights,bins=50,color='green',alpha=0.5,label='Heights')
+# plt.legend()
+# plt.ylabel('Frequency')
+# plt.title('Histogram')
+# plt.show()
 
 # plt.hist(filteredLandscape.Widths,bins=50,color='red',alpha=0.5,label='Widths')
 # plt.hist(filteredLandscape.Heights,bins=50,color='green',alpha=0.5,label='Heights')
@@ -65,9 +64,9 @@ plt.show()
 # plt.title('Histogram of Landscape')
 # plt.show()
 
-# plt.hist(filteredPortrait.Widths,bins=50,color='red',alpha=0.5,label='Widths')
-# plt.hist(filteredPortrait.Heights,bins=50,color='green',alpha=0.5,label='Heights')
-# plt.legend()
-# plt.ylabel('Frequency')
-# plt.title('Histogram of Portrait')
-# plt.show()
+plt.hist(filteredPortrait.Widths,bins=50,color='red',alpha=0.5,label='Widths')
+plt.hist(filteredPortrait.Heights,bins=50,color='green',alpha=0.5,label='Heights')
+plt.legend()
+plt.ylabel('Frequency')
+plt.title('Histogram of Portrait')
+plt.show()
