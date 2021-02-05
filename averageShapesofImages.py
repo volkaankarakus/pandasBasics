@@ -42,12 +42,32 @@ dataWH=pd.concat([dataFrameW,dataFrameH],axis=1)
 dataWH.reset_index(inplace=True,drop=True)
 print(dataWH)
 
+landscape=dataWH.Widths>dataWH.Heights
+dataWH['Shape']=['landscape' if i==True else 'portrait' for i in landscape]
 
+filteredLandscape=dataWH[dataWH.Shape=='landscape']
+filteredPortrait=dataWH[dataWH.Shape=='portrait']
+numericFeaturesFilteredLandscape=filteredLandscape.describe()
+numericFeaturesFilteredPortrait=filteredPortrait.describe()
 
 #histogram
-plt.hist(dataFrameW.Widths,bins=10,color='red',alpha=0.5,label='Widhts')
-plt.hist(dataFrameH.Heights,bins=10,color='green',alpha=0.5,label='Heights')
+plt.hist(dataFrameW.Widths,bins=50,color='red',alpha=0.5,label='Widhts')
+plt.hist(dataFrameH.Heights,bins=50,color='green',alpha=0.5,label='Heights')
 plt.legend()
 plt.ylabel('Frequency')
 plt.title('Histogram')
 plt.show()
+
+# plt.hist(filteredLandscape.Widths,bins=50,color='red',alpha=0.5,label='Widths')
+# plt.hist(filteredLandscape.Heights,bins=50,color='green',alpha=0.5,label='Heights')
+# plt.legend()
+# plt.ylabel('Frequency')
+# plt.title('Histogram of Landscape')
+# plt.show()
+
+# plt.hist(filteredPortrait.Widths,bins=50,color='red',alpha=0.5,label='Widths')
+# plt.hist(filteredPortrait.Heights,bins=50,color='green',alpha=0.5,label='Heights')
+# plt.legend()
+# plt.ylabel('Frequency')
+# plt.title('Histogram of Portrait')
+# plt.show()
